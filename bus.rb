@@ -26,12 +26,14 @@ class Bus
 
   def empty_bus(bus)
     for person in @passengers
-      @passengers.delete(person)
+      @passengers.clear
     end
   end
 
   def pick_up(bus_stop)
-    @passengers.push(@queue)
+    for person in bus_stop.queue
+      add_person_to_bus(person)
+    end
     bus_stop.remove_everyone_from_queue
   end
 
